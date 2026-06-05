@@ -1,0 +1,6 @@
+Controller,Settling_time_s,Max_u1,Max_u2,RMS_u,Overshoot_x,Overshoot_y
+PP Set 1 (Conservative),5.4450,154.7063,91.6567,9.3441,0.1800,0.1125
+PP Set 2 (Aggressive),1.9850,283.0990,210.1041,18.0237,0.0758,0.0262
+LQR — Bryson's Method,3.7675,578.3784,412.7621,16.4878,0.0410,0.0625
+LQR — Knee Point (\alpha=0.008),10.0350,73.9422,40.9068,4.4130,0.0960,0.3477
+NSGA-II Knee (1.8s, 3.5),1.7850,35.0171,46.1741,3.5197,0.0364,0.0411
