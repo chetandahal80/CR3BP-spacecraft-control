@@ -29,7 +29,7 @@ The progression is:
 
 **LQR with Bryson's Method** gives one physically motivated point, but no way to know whether it is a good choice relative to other LQR designs.
 
-**LQR Pareto Front (alpha-sweep)** reveals the complete tradeoff curve for the LQR controller family. Bryson's point sits on the high-effort end of the front — not a particularly efficient choice. A knee point at α=0.0077 achieves comparable mission performance with significantly less control effort.
+**LQR Pareto Front (alpha-sweep)** reveals the complete tradeoff curve for the LQR controller family. Bryson's point sits on the high-effort end of the front, so not a particularly efficient choice. A knee point at α=0.0077 achieves comparable mission performance with significantly less control effort.
 
 **NSGA-II** searches all 12 Q/R diagonal entries independently rather than scaling a fixed baseline. The result: settling times well below the LQR alpha-sweep minimum, confirming that scalar parametrisation of Q/R leaves a lot of performance on the table.
 
@@ -43,9 +43,9 @@ The progression is:
 |---|---|---|---|
 | Pole Placement Set 1 | 5.4s | 9.3 | Conservative pole locations |
 | Pole Placement Set 2 | 2.0s | 18.0 | Aggressive pole locations |
-| LQR — Bryson's Method | 3.8s | 16.5 | α = 1, standard baseline |
-| LQR — Knee Point | 10.0s | 4.4 | α = 0.0077, most efficient LQR |
-| **NSGA-II — Knee Point** | **1.8s** | **3.5** | Direct Q/R optimisation |
+| LQR - Bryson's Method | 3.8s | 16.5 | α = 1, standard baseline |
+| LQR - Knee Point | 10.0s | 4.4 | α = 0.0077, most efficient LQR |
+| **NSGA-II - Knee Point** | **1.8s** | **3.5** | Direct Q/R optimisation |
 
 The NSGA-II knee point achieves **1.8s settling at RMS 3.5** which is faster settling than any LQR alpha-sweep controller and lower effort than Bryson's Method. The LQR alpha-sweep minimum settling was 3.71s. NSGA-II extends this to 0.39s at the aggressive end of its front.
 
@@ -75,19 +75,19 @@ The gap between the two fronts is not because LQR is a bad controller as NSGA-II
 CR3BP-Spacecraft-Control/
 ├── src/
 │   ├── utils/
-│   │   ├── get_system_matrices.m      — CR3BP linearised A, B, C, E matrices
-│   │   ├── get_servo_matrices.m       — Augmented system with servo-compensator
-│   │   ├── run_simulation.m           — Forward Euler closed-loop simulation
-│   │   └── compute_settling_time.m    — First sustained crossing of 5% threshold
-│   ├── pareto_front_analysis.m     — LQR alpha-sweep Pareto front
-│   ├── full_system_simulation.m    — Full comparison of all controllers
-│   └── nsga_II.m             — NSGA-II multi-objective optimisation
+│   │   ├── get_system_matrices.m      - CR3BP linearised A, B, C, E matrices
+│   │   ├── get_servo_matrices.m       - Augmented system with servo-compensator
+│   │   ├── run_simulation.m           - Forward Euler closed-loop simulation
+│   │   └── compute_settling_time.m    - First sustained crossing of 5% threshold
+│   ├── pareto_front_analysis.m     - LQR alpha-sweep Pareto front
+│   ├── full_system_simulation.m    - Full comparison of all controllers
+│   └── nsga_II.m             - NSGA-II multi-objective optimisation
 ├── results/
-│   ├── pareto_data.mat                — LQR sweep results and saved gains
-│   ├── nsga2_results.mat              — NSGA-II Pareto front and knee point
-│   └── metrics_comparison.csv         — Performance table for all controllers
+│   ├── pareto_data.mat                - LQR sweep results and saved gains
+│   ├── nsga2_results.mat              - NSGA-II Pareto front and knee point
+│   └── metrics_comparison.csv         - Performance table for all controllers
 └── docs/
-    └── figures/                       — All generated plots
+    └── figures/                       - All generated plots
 ```
 
 ---
