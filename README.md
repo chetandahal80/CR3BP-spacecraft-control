@@ -115,9 +115,9 @@ Each script saves its results to `results/` and figures to `docs/figures/`. Scri
 
 ## Key Findings
 
-**Bryson's Method is not efficient.** At α=1, it achieves 3.8s settling but uses RMS=16.5, sitting at the high-effort end of the LQR Pareto front. The knee point at α=0.0077 achieves 10s settling with RMS=4.4, using 73% less effort.
+**Bryson's Method is not efficient.** At α=1, it achieves 3.8s settling but uses RMS = 16.5, sitting at the high-effort end of the LQR Pareto front. The knee point at α=0.0077 achieves 10s settling with RMS=4.4, using 73% less effort.
 
-**Pole placement can beat LQR on settling time.** PP Set 1 achieves 5.4s settling at RMS=9.3, which sits below the LQR alpha-sweep front at that effort level. This is not a bug — LQR minimises a quadratic integral cost, not settling time. It is provably optimal for its own cost function but not for mission metrics.
+**Pole placement can beat LQR on settling time.** PP Set 1 achieves 5.4s settling at RMS=9.3, which sits below the LQR alpha-sweep front at that effort level. This is not a bug - LQR minimises a quadratic integral cost, not settling time. It is provably optimal for its own cost function but not for mission metrics.
 
 **Alpha-scaling is a poor search strategy.** The LQR front is constructed by scaling Q and R together via a single parameter α. This traces a 1D curve through a 12D design space. NSGA-II searching all 12 dimensions finds controllers that alpha-scaling can never reach, demonstrating that the choice of Q/R search strategy matters as much as the choice of controller structure.
 
@@ -130,11 +130,11 @@ Each script saves its results to `results/` and figures to `docs/figures/`. Scri
 The analysis is on the **linearised** CR3BP. Near L2 the linearisation is valid for small deviations, but large initial conditions or external perturbations would require the full nonlinear model.
 
 Natural extensions:
-- **LQG** — replace the Luenberger observer with a Kalman filter for optimal estimation under Gaussian noise
-- **H∞ control** — direct worst-case disturbance rejection, more appropriate than LQR when disturbance bounds are known
-- **MPC** — handles actuator saturation constraints explicitly, more practically relevant for real spacecraft
-- **Full Q/R optimisation** — this project uses diagonal Q and R; off-diagonal terms could capture state coupling and potentially improve performance further
-- **Nonlinear extension** — apply the same optimisation framework to the full CR3BP nonlinear dynamics
+- **LQG** - replace the Luenberger observer with a Kalman filter for optimal estimation under Gaussian noise
+- **H∞ control** - direct worst-case disturbance rejection, more appropriate than LQR when disturbance bounds are known
+- **MPC** - handles actuator saturation constraints explicitly, more practically relevant for real spacecraft
+- **Full Q/R optimisation** - this project uses diagonal Q and R; off-diagonal terms could capture state coupling and potentially improve performance further
+- **Nonlinear extension** - apply the same optimisation framework to the full CR3BP nonlinear dynamics
 
 ---
 
